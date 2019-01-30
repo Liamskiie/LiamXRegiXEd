@@ -25,15 +25,17 @@ public class EllipseViewer extends JFrame implements KeyListener{
 			draw.moveDown();
 			System.out.println("Pluk");
 		}
-
+		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
+			draw.moveRight();
+			System.out.println("Pluk");
+		}
 		else if(e.getKeyCode() == KeyEvent.VK_LEFT){
 			draw.moveLeft();
 			System.out.println("Plek");
 		}
-
-		else if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-			draw.moveRight();
-			System.out.println("Plik");
+		else if(e.getKeyCode() == KeyEvent.VK_SPACE){
+			draw.attackAnimation();
+			System.out.println("ATTACK");
 		}
 	}
 	public void keyTyped(KeyEvent e){

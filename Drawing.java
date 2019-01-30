@@ -12,12 +12,14 @@ public class Drawing extends JComponent{
 	public int y = 50;
 	
 	public int state = 0;
-
+	public BufferedImage bground;
     public BufferedImage image;
-    public URL resource = getClass().getResource("run0.png");
+    public URL resource = getClass().getResource("tan1.png");
+     public URL bg = getClass().getResource("background.png");
 	
 	public Drawing(){
 		try{
+			bground = ImageIO.read(bg);
 			image = ImageIO.read(resource);
 		}
 		catch(IOException e){
@@ -27,22 +29,22 @@ public class Drawing extends JComponent{
 
 	public void reloadImage(){
 		if(state == 0){
-			resource = getClass().getResource("run0.png");
+			resource = getClass().getResource("tan1.png");
 		}
 		else if (state == 1){
-			resource = getClass().getResource("run1.png");
+			resource = getClass().getResource("tan2.png");
 		}
 		else if (state == 2){
-			resource = getClass().getResource("run2.png");
+			resource = getClass().getResource("tan3.png");
 		}
 		else if (state == 3){
-			resource = getClass().getResource("run3.png");
+			resource = getClass().getResource("tan4.png");
 		}
 		else if (state == 4){
-			resource = getClass().getResource("run4.png");
+			resource = getClass().getResource("tan5.png");
 		}
 		else if (state == 5){
-			resource = getClass().getResource("run5.png");
+			resource = getClass().getResource("tan6.png");
 			state=0;
 		}		
 	   
@@ -55,7 +57,36 @@ public class Drawing extends JComponent{
 			e.printStackTrace();
 		}
 	}
+	public void attackAnimation(){
+		Thread thread1 = new Thread(new Runnable(){
+			public void run(){
+				for(int atkstate = 1; atkstate<5;atkstate++){
+					if(atkstate==4){
+						resource = getClass().getResource("tan1.png");
+					}
+					else{
+						resource = getClass().getResource("gokuattack"+atkstate+".png");
+					}
+					try{
+						image = ImageIO.read(resource);
+					}
+					catch(IOException e){
+						e.printStackTrace();
+					}
 
+					repaint();
+
+					try{
+						Thread.sleep(100);
+					}
+					catch(InterruptedException e){
+
+					}
+				}
+			}
+		});
+		thread1.start();
+	}
 	
 
 	public void moveUp(){
@@ -81,8 +112,7 @@ public class Drawing extends JComponent{
 
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
-		g.setColor(Color.BLACK);
-		g.fillOval(x,y,50,50);
+		g.drawImage(bground,0,0,this);
 		g.drawImage(image,x,y,this);
 	}
 }
