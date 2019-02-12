@@ -14,7 +14,7 @@ public class Drawing extends JComponent{
 	public int state = 0;
 	public BufferedImage bground;
     public BufferedImage image;
-    public URL resource = getClass().getResource("tan1.png");
+    public URL resource = getClass().getResource("hop1.png");
      public URL bg = getClass().getResource("background.png");
 	
 	public Drawing(){
@@ -29,22 +29,22 @@ public class Drawing extends JComponent{
 
 	public void reloadImage(){
 		if(state == 0){
-			resource = getClass().getResource("tan1.png");
+			resource = getClass().getResource("hop2.png");
 		}
 		else if (state == 1){
-			resource = getClass().getResource("tan2.png");
+			resource = getClass().getResource("hop3.png");
 		}
 		else if (state == 2){
-			resource = getClass().getResource("tan3.png");
+			resource = getClass().getResource("hop4.png");
 		}
 		else if (state == 3){
-			resource = getClass().getResource("tan4.png");
+			resource = getClass().getResource("hop5.png");
 		}
 		else if (state == 4){
-			resource = getClass().getResource("tan5.png");
+			resource = getClass().getResource("hop6.png");
 		}
 		else if (state == 5){
-			resource = getClass().getResource("tan6.png");
+			resource = getClass().getResource("hop7.png");
 			state=0;
 		}		
 	   
